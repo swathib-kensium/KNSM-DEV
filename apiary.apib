@@ -88,6 +88,24 @@ You may create your own question using this action. It takes a JSON
 object containing a question and a collection of answers in the
 form of choices.
 
+
++ Parameters
+
+    + `currencyCode`:`USD`
+    + startDate : `2019-01-26` (UTC Date) - This is the start date in UTC. Default = 30 days before the *endDate*.
+    _Optional_
+    + endDate : `2019-03-26` (UTC Date) - This is the end date in UTC. Default = current date and time.
+    _Optional_
+
+
++ Attributes
+    + `id`:`25f6dadf-176a-415f-95c9-6ff39ff697ba` (string) - This is the ID returned in the response. You can use this ID for future associated requests.
+        _Read Only, length<=36_
+    + `merchantRefNum`:`P1234` (string) - This is the merchant reference number created by the merchant and submitted as part of the request.
+        _Mandatory, length<=255_
+    + `amount`:`100` (number) - This is the amount of the request, in minor units. If this value is not provided, the full remaining amount on the Settlement will be refunded. 
+
+
 + Request (application/json)
 
         {
@@ -99,6 +117,11 @@ form of choices.
                 "Ruby"
             ]
         }
+
+    + Headers
+
+            Authorization: "Basic YOUR-BASE64-ENCODED-API-KEY"
+            Simulator: "EXTERNAL"
 
 + Response 201 (application/json)
 
