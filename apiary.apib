@@ -5,7 +5,8 @@ HOST: https://polls.apiblueprint.org/
 
 Polls is a simple API allowing consumers to view polls and vote in them.
 
-## Sample Attributesge#1
+
+## Sample Attributes
 
 | Element            | Type   |Required| Description                                                                                         |
 |--------------------|--------|---------|-----------------------------------------------------------------------------------------------------|
@@ -21,6 +22,31 @@ Polls is a simple API allowing consumers to view polls and vote in them.
 | cvv2Result         | string |Read Only| This is the raw cvv2 result code.                                                                   |
 | orderId            | string |Read Only| Unique reference for the order. `ie: ORD_7915d463-ccc8-4305-9d33-9e5c9310f12e, SUB_c46645ea-b7b0-4a91-87f7-88c00ec0dea1`|
 | profile            | [profile](#profileobject) |Read Only| This contains the customer details shared by the processor.                      |
+
+
+<a name="profileobject" title="Profile Object"></a>
+# profile
+
+|Element            |Type                                                                                 |Required                                                                                                         |Description    |
+|---                |---                                                                                  |---                                                                                                              |---            |
+|locale             |enum                                                                                 |Required <br/> **Note:** Optional for CommercePro-Direct-Registration. Not required for Card Payouts.            |This indicates the language of the profile. Possible values are:<ul><li>en_US</li><li>fr_CA</li><li>en_GB</li></ul>|
+|firstName          |string <br/>`length<=80`<br/>`For CommercePro, length<=20`                           |Required                                                                                                         |This is the customer’s first name. |
+|lastName           |string <br/>`length<=80`<br/>`For CommercePro-Registration, length<=20`              |Required                                                                                                         |This is the customer’s last name. |
+|email              |string<br/>`length<=255`  <br/>`For CommercePro-Registration, length<=20`            |Required                                                                                                         |This is the customer's email address.|
+|phone              |string<br/>`length<=40`   <br/>`For CommercePro, min=10 max=15`                      |Required <br/> **Note:** Optional for GiroPay. Not required for Paysafe Card Payouts.                            |This is the customer's phone number.|
+|dateOfBirth        |dateOfBirth                                                                          |Required <br/> **Note:** Optional for payment.                                                                   |This is the customer's date of birth.|
+|identityDocuments  |object                                                                               |Required for CommercePro-Registration                                                                            |CommercePro registration process.|   
+
+```apib
+            {
+              "locale" : "en_US",
+              "firstName" : "John",
+              "lastName" : "Smith",
+              "email" : "john.smith@somedomain.com",
+              "phone" : "713-444-5555"
+              "dateOfBirth" : "04-25-1987"
+             }
+```
 
 
 ## Questions Collection [/questions]
