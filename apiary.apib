@@ -1,10 +1,11 @@
 FORMAT: 1A
 HOST: https://polls.apiblueprint.org/
 
-# Sample
+# Sample API
+
+>**IMPORTANT:**  Because the Kensium Payments API uses its [own unique API keys for request authentication](#apikey) and provides its own [Test and Production accounts](#goinglive), you should never click the **SIGN UP** or **LOGIN** buttons at the top right of the Developer Center navigation, as these are used strictly for the other APIs on the Developer Center. Please contact your business relationship manager or reach out to <integrations@kensium.com> for API keys and Test/Production accounts.
 
 Polls is a simple API allowing consumers to view polls and vote in them.
-
 
 ## Sample Attributes
 
@@ -12,7 +13,7 @@ Polls is a simple API allowing consumers to view polls and vote in them.
 |--------------------|--------|---------|-----------------------------------------------------------------------------------------------------|
 | id                 | string |Read Only| This is the response id returned by the processor                                                     |
 | responseId         | string |Read Only| This is the response ID assigned by Credorax.                                                       |
-| requestId          | string |Read Only| This is the request ID assigned by Paysafe.                                                         |
+| requestId          | string |Read Only| This is the request ID assigned by Kensium.                                                         |
 | description        | string |Read Only| This is a description of the response.                                                              |
 | authCode           | string |Read Only| This is the authorization code.                                                                     |
 | txnDateTime        | string |Read Only| This is the transaction date and time.                                                              |
@@ -33,7 +34,7 @@ Polls is a simple API allowing consumers to view polls and vote in them.
 |firstName          |string <br/>`length<=80`<br/>`For CommercePro, length<=20`                           |Required                                                                                                         |This is the customer’s first name. |
 |lastName           |string <br/>`length<=80`<br/>`For CommercePro-Registration, length<=20`              |Required                                                                                                         |This is the customer’s last name. |
 |email              |string<br/>`length<=255`  <br/>`For CommercePro-Registration, length<=20`            |Required                                                                                                         |This is the customer's email address.|
-|phone              |string<br/>`length<=40`   <br/>`For CommercePro, min=10 max=15`                      |Required <br/> **Note:** Optional for GiroPay. Not required for Paysafe Card Payouts.                            |This is the customer's phone number.|
+|phone              |string<br/>`length<=40`   <br/>`For CommercePro, min=10 max=15`                      |Required <br/> **Note:** Optional for CommercePro. Not required for Kensium Card Payouts.                            |This is the customer's phone number.|
 |dateOfBirth        |dateOfBirth                                                                          |Required <br/> **Note:** Optional for payment.                                                                   |This is the customer's date of birth.|
 |identityDocuments  |object                                                                               |Required for CommercePro-Registration                                                                            |CommercePro registration process.|   
 
