@@ -5,6 +5,24 @@ HOST: https://polls.apiblueprint.org/
 
 Polls is a simple API allowing consumers to view polls and vote in them.
 
+## Sample Attributesge#1
+
+| Element            | Type   |Required| Description                                                                                         |
+|--------------------|--------|---------|-----------------------------------------------------------------------------------------------------|
+| id                 | string |Read Only| This is the response id returned by the processor                                                     |
+| responseId         | string |Read Only| This is the response ID assigned by Credorax.                                                       |
+| requestId          | string |Read Only| This is the request ID assigned by Paysafe.                                                         |
+| description        | string |Read Only| This is a description of the response.                                                              |
+| authCode           | string |Read Only| This is the authorization code.                                                                     |
+| txnDateTime        | string |Read Only| This is the transaction date and time.                                                              |
+| referenceNbr       | string |Read Only| This is the Bank net transaction ID/Merch Tran Ref                                                  |
+| responseReasonCode | string |Read Only| This is the raw response reason code returned by Credorax.                                          |
+| cvvVerification    | enum   |Read Only| This is the response to the cvv submitted with the transaction request. Possible values are:<ul><li>MATCH</li><li>NO_MATCH</li><li>NO_MATCH</li><li>NOT_PROCESSED</li><li>UNKNOWN</li></ul> |
+| cvv2Result         | string |Read Only| This is the raw cvv2 result code.                                                                   |
+| orderId            | string |Read Only| Unique reference for the order. `ie: ORD_7915d463-ccc8-4305-9d33-9e5c9310f12e, SUB_c46645ea-b7b0-4a91-87f7-88c00ec0dea1`|
+| profile            | [profile](#profileobject) |Read Only| This contains the customer details shared by the processor.                      |
+
+
 ## Questions Collection [/questions]
 
 ### List All Questions [GET]
