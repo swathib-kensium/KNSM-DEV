@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://polls.apiblueprint.org/
+HOST: https://xmsqa6.fusionrms.com/Admin/GraphQL
 
 # RMS API
 
@@ -67,51 +67,28 @@ The RMS API is a work-in-progress: API endpoints are being added and expanded wi
 + giftcardTransCapture
 + purchaseAdd
 
-## Supported Endpoints [/questions]
+**Note:** - Your application should only use the supported endpoints listed above.
 
-### Query [GET]
+## Unsupported Endpoints
 
-+ Response 200 (application/json)
+Any other endpoints are currently not supported. They are for internal use only, or are in a preview stage of development. These endpoints may change, be removed or renamed at any time.
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+**Note:** Don’t see an API that you need, or would you like to use one of the unsupported endpoints? Contact Fusion Support - your input is invaluable to creation and finalization of our APIs.
 
-### Create a New Question [POST]
+## Tasks
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+### Authenticating Client Credentials [POST /myquery]
 
 + Request (application/json)
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
+        query MyQuery  {
+                          sale(since: "1554830160000;4499096027743125506;", first: 2) {
+                            until
+                            results {
+                              id
+                            }
+                        }
+                    }
 
 + Response 201 (application/json)
 
@@ -122,21 +99,499 @@ form of choices.
     + Body
 
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
+                "data": {
+                    "sale": {
+                      "until": "1554830160000;4499096027743125506;",
+                      "results": [
+                        {
+                          "id": "4499096027743125505"
+                        },
+                        {
+                          "id": "4499096027743125506"
+                        }
+                      ]
                     }
-                ]
-            }
+                  }
+                }
+                
+### Handling Errors [POST /myquery]
+
++ Request (application/json)
+
+        query MyQuery  {
+                          sale(since: "1554830160000;4499096027743125506;", first: 2) {
+                            until
+                            results {
+                              id
+                            }
+                        }
+                    }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "data": {
+                    "sale": {
+                      "until": "1554830160000;4499096027743125506;",
+                      "results": [
+                        {
+                          "id": "4499096027743125505"
+                        },
+                        {
+                          "id": "4499096027743125506"
+                        }
+                      ]
+                    }
+                  }
+                }
+
+### Since & Until Values [POST /myquery]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        query MyQuery  {
+                          sale(since: "1554830160000;4499096027743125506;", first: 2) {
+                            until
+                            results {
+                              id
+                            }
+                        }
+                    }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "data": {
+                    "sale": {
+                      "until": "1554830160000;4499096027743125506;",
+                      "results": [
+                        {
+                          "id": "4499096027743125505"
+                        },
+                        {
+                          "id": "4499096027743125506"
+                        }
+                      ]
+                    }
+                  }
+                }
+                
+### Get Environment Info [POST /myquery]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        query MyQuery  {
+                          sale(since: "1554830160000;4499096027743125506;", first: 2) {
+                            until
+                            results {
+                              id
+                            }
+                        }
+                    }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "data": {
+                    "sale": {
+                      "until": "1554830160000;4499096027743125506;",
+                      "results": [
+                        {
+                          "id": "4499096027743125505"
+                        },
+                        {
+                          "id": "4499096027743125506"
+                        }
+                      ]
+                    }
+                  }
+                }
+                
+### Get Customer [POST /myquery]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        query MyQuery  {
+                          sale(since: "1554830160000;4499096027743125506;", first: 2) {
+                            until
+                            results {
+                              id
+                            }
+                        }
+                    }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "data": {
+                    "sale": {
+                      "until": "1554830160000;4499096027743125506;",
+                      "results": [
+                        {
+                          "id": "4499096027743125505"
+                        },
+                        {
+                          "id": "4499096027743125506"
+                        }
+                      ]
+                    }
+                  }
+                }
+
+### Get Inventory [POST /myquery]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        query MyQuery  {
+                          sale(since: "1554830160000;4499096027743125506;", first: 2) {
+                            until
+                            results {
+                              id
+                            }
+                        }
+                    }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "data": {
+                    "sale": {
+                      "until": "1554830160000;4499096027743125506;",
+                      "results": [
+                        {
+                          "id": "4499096027743125505"
+                        },
+                        {
+                          "id": "4499096027743125506"
+                        }
+                      ]
+                    }
+                  }
+                }
+### Get Sale History [POST /myquery]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        query MyQuery  {
+                          sale(since: "1554830160000;4499096027743125506;", first: 2) {
+                            until
+                            results {
+                              id
+                            }
+                        }
+                    }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "data": {
+                    "sale": {
+                      "until": "1554830160000;4499096027743125506;",
+                      "results": [
+                        {
+                          "id": "4499096027743125505"
+                        },
+                        {
+                          "id": "4499096027743125506"
+                        }
+                      ]
+                    }
+                  }
+                }
+### Get Gift Card [POST /myquery]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        query MyQuery  {
+                          sale(since: "1554830160000;4499096027743125506;", first: 2) {
+                            until
+                            results {
+                              id
+                            }
+                        }
+                    }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "data": {
+                    "sale": {
+                      "until": "1554830160000;4499096027743125506;",
+                      "results": [
+                        {
+                          "id": "4499096027743125505"
+                        },
+                        {
+                          "id": "4499096027743125506"
+                        }
+                      ]
+                    }
+                  }
+                }
+                
+### Create Gift Card [POST /myquery]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        query MyQuery  {
+                          sale(since: "1554830160000;4499096027743125506;", first: 2) {
+                            until
+                            results {
+                              id
+                            }
+                        }
+                    }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "data": {
+                    "sale": {
+                      "until": "1554830160000;4499096027743125506;",
+                      "results": [
+                        {
+                          "id": "4499096027743125505"
+                        },
+                        {
+                          "id": "4499096027743125506"
+                        }
+                      ]
+                    }
+                  }
+                }
+### Edit Gift Card [POST /myquery]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        query MyQuery  {
+                          sale(since: "1554830160000;4499096027743125506;", first: 2) {
+                            until
+                            results {
+                              id
+                            }
+                        }
+                    }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "data": {
+                    "sale": {
+                      "until": "1554830160000;4499096027743125506;",
+                      "results": [
+                        {
+                          "id": "4499096027743125505"
+                        },
+                        {
+                          "id": "4499096027743125506"
+                        }
+                      ]
+                    }
+                  }
+                }
+### Create Gift Card Transaction [POST /myquery]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        query MyQuery  {
+                          sale(since: "1554830160000;4499096027743125506;", first: 2) {
+                            until
+                            results {
+                              id
+                            }
+                        }
+                    }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "data": {
+                    "sale": {
+                      "until": "1554830160000;4499096027743125506;",
+                      "results": [
+                        {
+                          "id": "4499096027743125505"
+                        },
+                        {
+                          "id": "4499096027743125506"
+                        }
+                      ]
+                    }
+                  }
+                }
+### Record Purchase [POST /myquery]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        query MyQuery  {
+                          sale(since: "1554830160000;4499096027743125506;", first: 2) {
+                            until
+                            results {
+                              id
+                            }
+                        }
+                    }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "data": {
+                    "sale": {
+                      "until": "1554830160000;4499096027743125506;",
+                      "results": [
+                        {
+                          "id": "4499096027743125505"
+                        },
+                        {
+                          "id": "4499096027743125506"
+                        }
+                      ]
+                    }
+                  }
+
+### Make Terminal Payments [POST /myquery]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        query MyQuery  {
+                          sale(since: "1554830160000;4499096027743125506;", first: 2) {
+                            until
+                            results {
+                              id
+                            }
+                        }
+                    }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "data": {
+                    "sale": {
+                      "until": "1554830160000;4499096027743125506;",
+                      "results": [
+                        {
+                          "id": "4499096027743125505"
+                        },
+                        {
+                          "id": "4499096027743125506"
+                        }
+                      ]
+                    }
+                  }
+                }
