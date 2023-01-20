@@ -1,11 +1,49 @@
 FORMAT: 1A
 HOST: https://polls.apiblueprint.org/
 
-# Sample Fusion RMS
+# RMS API
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+This section describes the RMS application programming interface (API), which can be used to integrate RMS with other software systems.
 
-## Questions Collection [/questions]
+RMS provides a GraphQL API that enables clients to query and update RMS data. A thorough understanding of GraphQL is necessary to understand how to use the API.
+
+**Notes:** 
+
++ See https://graphql.org/ for more information about GraphQL.
++ This link contains information about how to create GraphQL queries, and many links to development tools that can help you access the APIs programmatically
+
+## OpenID Connect
+
+Programmatic API access is protected through Open ID Connect. To access the API, your development tools and libraries must support authentication through Open ID Connect and the related OAuth technologies.
+
+OpenID Connect (OIDC) is a large and complex specification, which can be found at: https://openid.net/developers/specs/. Before wading into the details of understanding OIDC, we recommend that you choose a client library that corresponds to your programming environment first. Typically the client library documentation will provide better insight into how you can connect and authenticate via OIDC.
+
+A list of certified client library implementations can be found at: https://openid.net/developers/certified/#RPLibs.
+
+Communications from a trusted client - for example, a server computer that only you have access to - are usually best handled by the Client Credentials Flow. This type of authentication is described within our documentation.
+
+**Notes:** Communications from non-trusted clients - for example, software deployed to a non-secure environment like a store - may require a different OIDC flow type. Ensure that you understand the implications of the available OIDC flow types and when they should be used. It is your responsibility to secure your software client and the OIDC flow type that is used.
+
+## Graph QL Client
+
+The RMS admin console provides a feature to let you test your GraphQL queries. You can access this tool via the Configuration / GraphiQL menu.
+
+In addition to testing your queries while developing integration code, this tool can be helpful if you want to perform simple ad-hoc queries during daily operations.
+
+**Notes:** 
++ You can also use the tool to view reference documentation for each endpoint - simply click entity or field names to access the documentation.
+
+## Permissions
+
+GraphQL queries are subject to the permissions of the account that is executing the query. For this reason, you may encounter security errors when attempting to execute certain queries.
+
+If you run into these errors, a manager can adjust security permissions through Users and Roles.
+
+Documentation below describes the types of permissions that are required to access endpoints.
+
++ The RMS API is a work-in-progress: API endpoints are being added and expanded with each new RMS version.
+
+## Supported Endpoints [/questions]
 
 ### List All Questions [GET]
 
